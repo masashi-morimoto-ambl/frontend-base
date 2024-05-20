@@ -1,0 +1,2 @@
+# frontend-base
+WEBフロントのベースプロジェクト
