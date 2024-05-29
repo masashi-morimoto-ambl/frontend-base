@@ -1,10 +1,10 @@
+import { authRepository } from '@/api'
 import { ERROR_PAGE_TITLE, ERROR_TYPE } from '@/enums'
 import { AppError } from '@/models'
-import { authRepository } from '@/repositories/service'
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { useEffect } from 'react'
-import { ErrorTemplate } from './template/ErrorTemplate'
+import { ErrorTemplate } from '../../components/layouts/ErrorTemplate'
 
 type Props = {
   error: AppError

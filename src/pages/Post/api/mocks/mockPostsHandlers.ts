@@ -1,6 +1,6 @@
 import { http, DefaultBodyType, HttpResponse, StrictResponse, delay } from 'msw'
-import { API_URL } from '../service/config'
-import { DELAY } from './enums'
+import { API_URL } from '../../../../api/config'
+import { DELAY } from '../../../../api/mocks/enums'
 
 const getTrustContractInformation = http.get(API_URL.GET_POSTS, async (): Promise<StrictResponse<DefaultBodyType>> => {
   const data = [
@@ -61,7 +61,7 @@ const getTrustContractInformation = http.get(API_URL.GET_POSTS, async (): Promis
   ]
 
   await delay(DELAY)
-  return HttpResponse.json(data, { status: 400 })
+  return HttpResponse.json(data, { status: 200 })
 })
 
 export const mockPosts = [getTrustContractInformation]

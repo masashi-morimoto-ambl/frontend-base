@@ -1,5 +1,5 @@
-import { client } from './client'
-import { API_URL } from './config'
+import { client } from '../client'
+import { API_URL } from '../config'
 
 export const login = async (params: {
   authenticationCode: string
