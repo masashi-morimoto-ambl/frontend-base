@@ -1,5 +1,5 @@
-import { client } from './client'
-import { API_URL } from './config'
+import { client } from '../../../api/client'
+import { API_URL } from '../../../api/config'
 
 export type PostType = {
   id: string

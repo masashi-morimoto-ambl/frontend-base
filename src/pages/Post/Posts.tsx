@@ -1,15 +1,9 @@
-import { fetchPosts } from '@/repositories/service/postRepository'
 import { Route } from '@/routes/posts'
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link } from '@tanstack/react-router'
+import { useGetPostSuspenseQuery } from './hooks'
 
 export const Posts = () => {
-  const postsQuery = useSuspenseQuery({
-    queryKey: ['posts'],
-    queryFn: () => fetchPosts(),
-    select: (data) => data?.slice(0, 10) || [],
-  })
-  const posts = postsQuery.data
+  const { data: posts } = useGetPostSuspenseQuery()
   const { page, keyword } = Route.useSearch()
   return (
     <>
