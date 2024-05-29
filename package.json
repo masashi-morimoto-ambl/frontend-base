@@ -9,16 +9,13 @@
     "lint": "npx @biomejs/biome lint ./src",
     "format": "npx @biomejs/biome format ./src --write",
     "preview": "vite preview",
-    "prepare": "husky",
-    "postinstall": "panda codegen",
+    "postinstall": "panda codegen && husky",
     "type-check": "tsc --noEmit",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "yarn lint --apply --error-on-warnings"
-    ]
+    "*.{js,ts,tsx}": ["yarn lint --apply --error-on-warnings"]
   },
   "dependencies": {
     "@ark-ui/react": "^2.2.2",
