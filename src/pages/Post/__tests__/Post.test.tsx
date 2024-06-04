@@ -1,6 +1,6 @@
-import { server } from '@/repositories/mocks/server'
-import { API_URL } from '@/repositories/service/config'
-import { render, waitFor } from '@/test/utils/test-utils'
+import { API_URL } from '@/api/config'
+import { server } from '@/api/mocks/server'
+import { render, waitFor } from '@/utils/test-utils'
 import { http, HttpResponse } from 'msw'
 import { afterEach, describe, expect, test, vi } from 'vitest'
 

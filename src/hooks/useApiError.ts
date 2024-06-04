@@ -1,5 +1,5 @@
-import { useErrorData } from '@/components/pages'
 import { isApiError } from '@/models'
+import { useErrorData } from '@/pages'
 import { getErrorType } from '@/utils'
 import { useCallback } from 'react'
 

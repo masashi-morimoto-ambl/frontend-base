@@ -1,10 +1,10 @@
-import { ErrorContextProvider } from '@/components/pages'
+import { ErrorContextProvider } from '@/pages'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { routeTree } from './routeTree.gen'
+import './styles/index.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +39,7 @@ const enableMocking = async () => {
     return
   }
 
-  const { worker } = await import('./repositories/mocks/browser')
+  const { worker } = await import('./api/mocks/browser')
 
   return worker.start()
 }

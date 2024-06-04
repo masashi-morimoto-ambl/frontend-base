@@ -1,4 +1,4 @@
-import { PostsPage } from '@/components/pages'
+import { PostsPage } from '@/pages'
 import { isString } from '@/utils'
 import { createFileRoute } from '@tanstack/react-router'
 
