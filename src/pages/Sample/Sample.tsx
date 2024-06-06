@@ -1,8 +1,11 @@
 import { ChartArea, ChartBar, ChartPie } from '@/components/atoms'
 import { TabBarSub } from '@/components/atoms/tabBar/TabBarSub'
 import { Tabs } from '@ark-ui/react'
+import { useGetSampleQuery } from './hooks'
 
 export const Sample = () => {
+  const { data, isLoading } = useGetSampleQuery()
+
   return (
     <>
       <TabBarSub
@@ -17,6 +20,15 @@ export const Sample = () => {
       <ChartPie />
       <ChartArea />
       <ChartBar />
+      {isLoading ? (
+        <p>loading...</p>
+      ) : (
+        <>
+          {data.map((v) => (
+            <p key={v.id}>{v.title}</p>
+          ))}
+        </>
+      )}
     </>
   )
 }

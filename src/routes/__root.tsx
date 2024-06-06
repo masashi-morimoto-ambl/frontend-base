@@ -36,24 +36,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     }
   },
   component: () => {
-    return (
-      <MainTemplate />
-      // <CatchBoundary
-      //   getResetKey={() => 'reset'}
-      //   onCatch={(error) => {
-      //     console.log(
-      //       false,
-      //       `The following error wasn't caught by any route! 👇 At the very least, consider setting an 'errorComponent' in your RootRoute!`,
-      //     )
-      //     console.error(error)
-      //   }}
-      //   errorComponent={() => {
-      //     console.log('kita??')
-      //   }}
-      // >
-      //   <MainTemplate />
-      // </CatchBoundary>
-    )
+    return <MainTemplate />
   },
   errorComponent: ({ error }) => {
     if (isApiError(error)) {

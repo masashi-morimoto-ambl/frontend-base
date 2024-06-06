@@ -1,1 +1,1 @@
-export * from './useGetPostSuspenseQuery'
+export * from './useGetPostQuery'

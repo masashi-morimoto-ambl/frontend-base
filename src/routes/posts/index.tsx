@@ -1,4 +1,4 @@
-import { PostsPage } from '@/pages'
+import { Posts } from '@/pages/Post/Posts'
 import { isString } from '@/utils'
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -14,5 +14,9 @@ export const Route = createFileRoute('/posts/')({
       keyword: isString(search.keyword) ? search.keyword : '',
     }
   },
-  component: () => <PostsPage />,
+  component: Posts,
+  // errorComponent: ({ error }) => {
+  //　画面個別でエラーコンポーネントを指定したい場合はこちらに
+  //　defaultErrorComponentは呼ばれない
+  // },
 })

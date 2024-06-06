@@ -10,20 +10,21 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 0,
+      refetchOnMount: true,
       refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      throwOnError: true,
     },
   },
-  // queryCache: new QueryCache({
-  //   onError: (error) => {
-  //     console.log('onError', error)
-  //   },
-  // }),
 })
 
 const router = createRouter({
   routeTree,
   context: { queryClient },
   defaultErrorComponent: ({ error }) => {
+    // デフォルトのエラーコンポーネント
+    // createFileRouteでerrorComponentが指定されない場合に呼ばれる
+    // __rootのerrorComponentを呼び出すためにthrow errorが必要
     throw error
   },
 })
