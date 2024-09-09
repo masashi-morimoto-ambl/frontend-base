@@ -1,12 +1,1 @@
 @layer reset, base, tokens, recipes, utilities;
-
-/* rechartsのX軸目盛は、ライブラリ側では消せないので手動で消すためのスタイルを適用。 */
-.area-chart {
-    /* グラフの1番上の目盛りを非表示にする。 */
-    .recharts-cartesian-axis-tick:last-child {
-        display: none;
-    }
-    .recharts-cartesian-grid-horizontal > line:nth-last-child(2) {
-        display: none;
-    }
-}

@@ -1,43 +1,3 @@
-export const formatNumericSeparator = (
-  from: string | number,
-  integerDigit: number,
-  decimalDigit: number | undefined,
-  isAllowNegative?: boolean,
-) => {
-  const text = isStringNumber(from)
-
-  const number =
-    typeof text === 'number'
-      ? text
-      : parseFloat(
-          unFormatNumericSeparator(
-            trimExceedNumber(
-              text.replace(/[０-９]/g, (s) => String.fromCharCode(s.charCodeAt(0) - 0xfee0)),
-              integerDigit,
-            ),
-            isAllowNegative,
-          ),
-        )
-
-  if (Number.isNaN(number)) {
-    return ''
-  }
-
-  const [intString, decimalString] = number.toString().split('.')
-  const isNegative = isAllowNegative && number < 0
-
-  const integerSliceSpan = isNegative
-    ? integerDigit + 1 // マイナス(-)の考慮
-    : integerDigit
-
-  const withCommaInt = parseInt(intString.slice(0, integerSliceSpan)).toLocaleString()
-  return decimalString
-    ? `${withCommaInt}${
-        parseInt(decimalString.slice(0, decimalDigit)) === 0 || decimalDigit === 0 ? '' : `.${decimalString.slice(0, decimalDigit)}`
-      }`
-    : withCommaInt
-}
-
 export const unFormatNumericSeparator = (from: string | number, isAllowNegative: boolean | undefined) => {
   const reg = isAllowNegative ? /[^0-9０-９-]/g : /[^0-9０-９]/g
   return typeof from === 'string' ? from.replace(reg, '').replace(/(\d)[-]+/g, '$1') : `${from}`
@@ -85,12 +45,3 @@ export const toHalfWidthCharacter = (from: string | number) => {
  * 型をstring or number に絞り込み
  */
 const isStringNumber = (from: string | number | null | undefined) => (from == null ? '' : from)
-
-/**
- * 大きすぎる数の場合、1e+28のような表記になってしまい、フォーマットがうまくいかない。
- * そのため、数値以外のものをトリムした時点で15桁以上の場合は15桁まで詰めてからnumberに変換する。
- */
-const trimExceedNumber = (source: number | string, integerDigit: number) => {
-  const filteredNumbers = String(source).replaceAll(/\D/g, '')
-  return filteredNumbers.slice(0, integerDigit)
-}
